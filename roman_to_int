@@ -1,0 +1,31 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        numL=[]
+        num=0
+        for i in range(len(s)):
+            if s[i]=='I':
+                numL.append(1)
+            elif s[i]=='V':
+                numL.append(5)
+            elif s[i]=='X':
+                numL.append(10)
+            elif s[i]=='L':
+                numL.append(50)
+            elif s[i]=='C':
+                numL.append(100)
+            elif s[i]=='D':
+                numL.append(500)
+            elif s[i]=='M':
+                numL.append(1000)
+        numL.extend([0,0,0])
+        for j in range(len(numL)):
+            if numL[j]==0:
+                break
+            elif numL[j]<numL[j+1]:
+                num -= numL[j]
+            elif numL[j]>= numL[j+1]:
+                num+= numL[j]
+        return num
+            
+        
+        
